@@ -83,9 +83,30 @@ int is_valid(int plansza[9][9], int wspolrzedne[2], int liczba)
 }
 
 
-int backtracking(int plansza[9][9], int wspolrzedne[2])
+int backtracking(int plansza[9][9])
 {
-    int found[][] = 
+    int wspolrzedne[2];
+    if ((znajdz_puste(plansza, wspolrzedne)) == 0)
+    {
+        return 1;
+    }
+    else
+    {
+        znajdz_puste(plansza, wspolrzedne);
+    }
+    
 
+    for (int i = 1; i<10; i++)
+    {
+        if (is_valid(plansza, wspolrzedne, i))
+        {
+            plansza[wspolrzedne[0]][wspolrzedne[1]] = i;
+            if ((backtracking(plansza)) == 1)
+                return 1;
+            plansza[wspolrzedne[0]][wspolrzedne[1]] = 0;
+            printf("plansza o wspolrzednych to %d", plansza[wspolrzedne[0]][wspolrzedne[1]] = 0);
+        }
+    }
+    return 0;
 }
 

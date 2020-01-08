@@ -6,12 +6,15 @@
 int main()
 {
     int plansza[9][9];
-    int wspolrzedne[2];
+    printf("Plansza przed:\n");
     wczytaj_do_tablicy("plansza.txt", plansza);
     wypisz(plansza);
-    znajdz_puste(plansza, wspolrzedne);
-    printf("\nx = %d\n", wspolrzedne[1]);
-    printf("y = %d\n", wspolrzedne[0]);
+    
+    backtracking(plansza);
+    printf("Plansza po:\n");
+    wypisz(plansza);
+    //printf("\nx = %d\n", wspolrzedne[1]);
+    //printf("y = %d\n", wspolrzedne[0]);
 
     return 0;
 }
