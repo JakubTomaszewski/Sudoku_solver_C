@@ -76,14 +76,16 @@ int is_valid(int plansza[9][9], int wspolrzedne[2], int liczba)
     for (int y = box_y*3; y<(box_y*3 + 3); y++)
         for (int x = box_x*3; x<(box_x*3 + 3); x++)
         {
-            
+            if ((plansza[y][x] == liczba) && (y != wspolrzedne[0])  && (x != wspolrzedne[1]))
+                return 0;
         }
+    return 1;
 }
 
 
-// int backtracking(int plansza[9][9], int wspolrzedne[2])
-// {
+int backtracking(int plansza[9][9], int wspolrzedne[2])
+{
+    int found[][] = 
 
-
-// }
+}
 
