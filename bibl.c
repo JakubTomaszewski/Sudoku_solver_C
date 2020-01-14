@@ -65,7 +65,7 @@ int is_valid(int plansza[9][9], int wspolrzedne[2], int liczba)
     //col
     for (int y = 0; y<9; y++)
     {
-        if ((plansza[wspolrzedne[1]][y] == liczba) && (y != wspolrzedne[0]))
+        if ((plansza[y][wspolrzedne[1]] == liczba) && (y != wspolrzedne[0]))
             return 0;
     }
 
@@ -73,10 +73,10 @@ int is_valid(int plansza[9][9], int wspolrzedne[2], int liczba)
     int box_x = wspolrzedne[1] / 3;
     int box_y = wspolrzedne[0] / 3;
 
-    for (int y = box_y*3; y<(box_y*3 + 3); y++)
-        for (int x = box_x*3; x<(box_x*3 + 3); x++)
+    for (int i = box_y*3; i<(box_y*3 + 3); i++)
+        for (int j = box_x*3; j<(box_x*3 + 3); j++)
         {
-            if ((plansza[y][x] == liczba) && (y != wspolrzedne[0])  && (x != wspolrzedne[1]))
+            if ((plansza[i][j] == liczba) && (i != wspolrzedne[0])  && (j != wspolrzedne[1]))
                 return 0;
         }
     return 1;
@@ -86,27 +86,33 @@ int is_valid(int plansza[9][9], int wspolrzedne[2], int liczba)
 int backtracking(int plansza[9][9])
 {
     int wspolrzedne[2];
-    if ((znajdz_puste(plansza, wspolrzedne)) == 0)
+    //znajdz_puste(plansza, wspolrzedne);
+    printf("Szukam puste %d\n", znajdz_puste(plansza, wspolrzedne));
+    if (((znajdz_puste(plansza, wspolrzedne)) == 0))
     {
         return 1;
     }
     else
     {
         znajdz_puste(plansza, wspolrzedne);
+        printf("\nelse x =%d, y = %d\n", wspolrzedne[1], wspolrzedne[0]);
     }
     
-
     for (int i = 1; i<10; i++)
     {
-        if (is_valid(plansza, wspolrzedne, i))
+        printf("Sprawdzam %d\n", i);
+        if ((is_valid(plansza, wspolrzedne, i) == 1))
         {
             plansza[wspolrzedne[0]][wspolrzedne[1]] = i;
+            //znajdz_puste(plansza, wspolrzedne);
+            printf("PUNKT NA PLANSZY TO %d\n", plansza[wspolrzedne[0]][wspolrzedne[1]]);
+            printf("\nisvalid x =%d, y = %d, i = %d\n", wspolrzedne[1], wspolrzedne[0], i);
+            wypisz(plansza);
             if ((backtracking(plansza)) == 1)
                 return 1;
             plansza[wspolrzedne[0]][wspolrzedne[1]] = 0;
-            printf("plansza o wspolrzednych to %d", plansza[wspolrzedne[0]][wspolrzedne[1]] = 0);
+            //printf("plansza o wspolrzednych to %d", plansza[wspolrzedne[0]][wspolrzedne[1]] = 0);
         }
     }
     return 0;
 }
-
