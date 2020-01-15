@@ -10,9 +10,12 @@ int main()
     wczytaj_do_tablicy("plansza.txt", plansza);
     wypisz(plansza);
     
-    backtracking(plansza);
-    printf("Plansza po:\n");
-    wypisz(plansza);
+    if (poprawna_plansza(plansza))
+        {
+            backtracking(plansza);
+            printf("\nPlansza po:\n");
+            wypisz(plansza);
+        }
     //printf("\nx = %d\n", wspolrzedne[1]);
     //printf("y = %d\n", wspolrzedne[0]);
 

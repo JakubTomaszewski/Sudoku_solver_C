@@ -82,6 +82,45 @@ int is_valid(int plansza[9][9], int wspolrzedne[2], int liczba)
     return 1;
 }
 
+int poprawna_plansza(int plansza[9][9])
+{
+    int counter_x;
+    int counter_y;
+for (int i=1; i<10; i++)   
+{
+    for (int y=0; y<9; y++)
+    {
+        counter_x=0;
+        counter_y=0;
+        for (int x=0; x<9; x++)
+        {
+            //rows
+            if ((plansza[y][x] == i))
+                {
+                counter_x++;
+                if (counter_x>1)
+                    {
+                        printf("\nNie da sie rozwiazac tej planszy!\n");
+                        return 0;
+                    }
+                }
+            //cols
+            if ((plansza[x][y] == i))
+                {
+                counter_y++;
+                if (counter_y>1)
+                {
+                    printf("\nNie da sie rozwiazac tej planszy!\n");
+                    return 0;
+                }
+                }        
+        }
+    }
+}
+    
+    return 1;
+}
+
 
 int backtracking(int plansza[9][9])
 {
