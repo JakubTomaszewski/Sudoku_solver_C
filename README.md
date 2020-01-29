@@ -1,1 +1,3 @@
-# Sudoku solver using backtracking algorithm
+# Sudoku solver using backtracking algorithm in C
+
+####Project for Computer Science class
